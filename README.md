@@ -1,2 +1,2 @@
 # Databricks Visualization
-Contain visualization of Retail sales anaylsis and Coffe_Shop dataset
+Contain visualization of Retail sales anaylsis and Coffee_Shop dataset
