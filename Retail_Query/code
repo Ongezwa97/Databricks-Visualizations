@@ -1,0 +1,23 @@
+SELECT *,
+  count(DISTINCT `Transaction ID`) as unique_transactions,
+  count(distinct `Customer ID`) as unique_customers,
+  sum(`Total Amount`) as total_revenue,
+  sum(`Price per Unit`) as total_price,
+  sum(Quantity) as total_quantity,
+  month(Date) as month,
+  dayname(Date) as day,
+  date_format(Date, 'MMMM') as month_name,
+  case 
+    when `Total Amount` <= 500 then 'Low'
+    when `Total Amount` BETWEEN 500 and 1000 then 'Medium'
+    when `Total Amount` > 1000 then 'High'
+  end as transaction_value,
+  case
+    when Age BETWEEN 18 and 25 then 'Young'
+    when Age BETWEEN 25 and 35 then 'Adults'
+    when Age BETWEEN 35 and 50 then 'Seniors'
+    else 'Old'
+  end as age_group
+FROM retail_trends.sales
+GROUP BY ALL
+LIMIT 1000;
